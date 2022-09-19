@@ -37,6 +37,8 @@ class MainActivity : AppCompatActivity(),OnClickRowListener {
     }
 
     private fun getData() {
+        binding.shimmerLayout.startShimmer()
+
         val call: Call<List<ApiResponse>> =
             Retrofit.getClient.getApiData()
         call.enqueue(object : Callback<List<ApiResponse>> {
@@ -47,7 +49,11 @@ class MainActivity : AppCompatActivity(),OnClickRowListener {
             ) {
                 if (response.isSuccessful) {
 
-                    binding.progressBar.visibility = View.GONE
+//                    binding.progressBar.visibility = View.GONE
+                    binding.shimmerLayout.apply {
+                        stopShimmer()
+                        visibility = View.GONE
+                    }
 
                     recyclerDataArrayList = response.body() as ArrayList<ApiResponse>?
 
