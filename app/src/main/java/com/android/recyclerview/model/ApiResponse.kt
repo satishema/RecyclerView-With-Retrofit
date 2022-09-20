@@ -1,19 +1,17 @@
-package com.recyclerview.recyclerviewpractice.model
+package com.android.recyclerview.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-//class ApiResponse : ArrayList<ApiResponseItem>(){
-//
-//}
-
+@Entity(tableName = "api_response")
 data class ApiResponse(
     val calories: String?,
     val carbos: String?,
-    val country: String? = null,
     val description: String?,
     val difficulty: Int?,
     val fats: String?,
     val headline: String?,
-    val id: String?,
+    @PrimaryKey val id: String,
     val image: String?,
     val name: String?,
     val proteins: String?,

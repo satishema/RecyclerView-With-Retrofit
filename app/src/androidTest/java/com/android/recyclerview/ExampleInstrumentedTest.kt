@@ -1,4 +1,4 @@
-package com.recyclerview.recyclerviewpractice
+package com.android.recyclerview
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

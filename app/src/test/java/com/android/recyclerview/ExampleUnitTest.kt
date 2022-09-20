@@ -1,4 +1,4 @@
-package com.recyclerview.recyclerviewpractice
+package com.android.recyclerview
 
 import org.junit.Test
 

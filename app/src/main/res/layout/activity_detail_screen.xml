@@ -5,7 +5,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailScreen">
+    tools:context=".activity.DetailScreen">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -85,17 +85,6 @@
                 android:layout_margin="5dp"
                 android:padding="5dp"
                 android:text="Carbos"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvCountry"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:padding="5dp"
-                android:text="Country"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />

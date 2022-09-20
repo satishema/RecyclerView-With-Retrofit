@@ -1,4 +1,4 @@
-package com.recyclerview.recyclerviewpractice
+package com.android.recyclerview.activity
 
 import android.os.Bundle
 import android.util.Log
@@ -6,8 +6,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
-import com.recyclerview.recyclerviewpractice.databinding.ActivityDetailScreenBinding
-import com.recyclerview.recyclerviewpractice.model.ApiResponse
+import com.android.recyclerview.R
+import com.android.recyclerview.databinding.ActivityDetailScreenBinding
+import com.android.recyclerview.model.ApiResponse
 import com.squareup.picasso.Picasso
 
 class DetailScreen : AppCompatActivity() {
@@ -34,11 +35,6 @@ class DetailScreen : AppCompatActivity() {
         )
         binding.tvCarbos.text = HtmlCompat.fromHtml(
             "Carbos : <b>${item?.carbos}</b>",
-            HtmlCompat.FROM_HTML_MODE_LEGACY
-        )
-        binding.tvCountry.visibility = View.GONE
-        binding.tvCountry.text = HtmlCompat.fromHtml(
-            "Country : <b>${item?.country}</b>",
             HtmlCompat.FROM_HTML_MODE_LEGACY
         )
         binding.tvDescription.text = HtmlCompat.fromHtml(

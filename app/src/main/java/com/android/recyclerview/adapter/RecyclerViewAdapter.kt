@@ -1,16 +1,15 @@
-package com.recyclerview.recyclerviewpractice.adapter
+package com.android.recyclerview.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.recyclerview.recyclerviewpractice.OnClickRowListener
-import com.recyclerview.recyclerviewpractice.adapter.RecyclerViewAdapter.RecyclerViewHolder
-import com.recyclerview.recyclerviewpractice.R
-import com.recyclerview.recyclerviewpractice.model.ApiResponse
+import com.android.recyclerview.listener.OnClickRowListener
+import com.android.recyclerview.adapter.RecyclerViewAdapter.RecyclerViewHolder
+import com.android.recyclerview.R
+import com.android.recyclerview.model.ApiResponse
 import com.squareup.picasso.Picasso
 
 class RecyclerViewAdapter(
