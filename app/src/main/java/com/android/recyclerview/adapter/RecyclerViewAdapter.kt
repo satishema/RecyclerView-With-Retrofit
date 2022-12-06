@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.android.recyclerview.listener.OnClickRowListener
-import com.android.recyclerview.adapter.RecyclerViewAdapter.RecyclerViewHolder
 import com.android.recyclerview.R
+import com.android.recyclerview.adapter.RecyclerViewAdapter.RecyclerViewHolder
+import com.android.recyclerview.listener.OnClickRowListener
 import com.android.recyclerview.model.ApiResponse
 import com.squareup.picasso.Picasso
 
