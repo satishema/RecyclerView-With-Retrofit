@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.recyclerview.recyclerviewpractice'
+    namespace 'com.android.foodapp'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.recyclerview.recyclerviewpractice"
+        applicationId "com.android.foodapp"
         minSdk 21
         targetSdk 33
         versionCode 1

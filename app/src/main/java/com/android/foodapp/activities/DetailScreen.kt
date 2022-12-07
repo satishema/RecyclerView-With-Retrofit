@@ -1,4 +1,4 @@
-package com.recyclerview.recyclerviewpractice
+package com.android.foodapp.activities
 
 import android.os.Bundle
 import android.util.Log
@@ -6,17 +6,17 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
+import com.android.foodapp.R
 import com.bumptech.glide.Glide
-import com.recyclerview.recyclerviewpractice.databinding.ActivityDetailScreenBinding
-import com.recyclerview.recyclerviewpractice.model.ApiResponse
-import com.squareup.picasso.Picasso
+import com.android.foodapp.databinding.ActivityDetailScreenBinding
+import com.android.foodapp.model.FoodResponse
 
 class DetailScreen : AppCompatActivity() {
     var TAG = "DetailScreen"
     private lateinit var binding: ActivityDetailScreenBinding
 
     companion object {
-        var item: ApiResponse? = null
+        var item: FoodResponse? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

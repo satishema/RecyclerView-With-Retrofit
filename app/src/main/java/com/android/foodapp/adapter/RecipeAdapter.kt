@@ -1,22 +1,21 @@
-package com.recyclerview.recyclerviewpractice.adapter
+package com.android.foodapp.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.recyclerview.recyclerviewpractice.OnClickRowListener
-import com.recyclerview.recyclerviewpractice.databinding.CustomRowListViewBinding
-import com.recyclerview.recyclerviewpractice.model.ApiResponse
-import com.recyclerview.recyclerviewpractice.viewModel.RecipeViewModel
+import com.android.foodapp.listener.OnClickRowListener
+import com.android.foodapp.databinding.CustomRowListViewBinding
+import com.android.foodapp.model.FoodResponse
 
 class RecipeAdapter(
     private val listener: OnClickRowListener
 ) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
-    private var recipeList = ArrayList<ApiResponse>()
+    private var recipeList = ArrayList<FoodResponse>()
     @SuppressLint("NotifyDataSetChanged")
-    fun setMovieList(recipeList : List<ApiResponse>){
-        this.recipeList = recipeList as ArrayList<ApiResponse>
+    fun setMovieList(recipeList : List<FoodResponse>){
+        this.recipeList = recipeList as ArrayList<FoodResponse>
         notifyDataSetChanged()
     }
 
