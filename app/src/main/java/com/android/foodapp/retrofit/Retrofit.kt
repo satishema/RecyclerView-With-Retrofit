@@ -1,4 +1,4 @@
-package com.android.recyclerview.retrofit
+package com.android.foodapp.retrofit
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

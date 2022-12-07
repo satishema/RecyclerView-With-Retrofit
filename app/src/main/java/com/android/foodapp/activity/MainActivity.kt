@@ -1,4 +1,4 @@
-package com.android.recyclerview.activity
+package com.android.foodapp.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,13 +9,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.recyclerview.R
-import com.android.recyclerview.adapter.RecyclerViewAdapter
-import com.android.recyclerview.databinding.ActivityMainBinding
-import com.android.recyclerview.listener.OnClickRowListener
-import com.android.recyclerview.model.ApiResponse
-import com.android.recyclerview.retrofit.Retrofit
-import com.android.recyclerview.room.AppDatabase
+import com.android.foodapp.R
+import com.android.foodapp.adapter.RecyclerViewAdapter
+import com.android.foodapp.databinding.ActivityMainBinding
+import com.android.foodapp.listener.OnClickRowListener
+import com.android.foodapp.model.ApiResponse
+import com.android.foodapp.retrofit.Retrofit
+import com.android.foodapp.room.AppDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

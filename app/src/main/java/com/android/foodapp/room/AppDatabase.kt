@@ -1,10 +1,10 @@
-package com.android.recyclerview.room
+package com.android.foodapp.room
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.android.recyclerview.model.ApiResponse
+import com.android.foodapp.model.ApiResponse
 
 @Database(entities = [ApiResponse::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {

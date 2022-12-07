@@ -8,7 +8,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.recyclerview.recyclerviewpractice"
+        applicationId "com.foodapp.recyclerviewpractice"
         minSdk 21
         targetSdk 33
         versionCode 1
@@ -34,7 +34,7 @@ android {
         viewBinding true
         dataBinding true
     }
-    namespace 'com.android.recyclerview'
+    namespace 'com.android.foodapp'
 }
 
 dependencies {

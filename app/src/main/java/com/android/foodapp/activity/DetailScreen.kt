@@ -1,13 +1,13 @@
-package com.android.recyclerview.activity
+package com.android.foodapp.activity
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
-import com.android.recyclerview.R
-import com.android.recyclerview.databinding.ActivityDetailScreenBinding
-import com.android.recyclerview.model.ApiResponse
+import com.android.foodapp.R
+import com.android.foodapp.databinding.ActivityDetailScreenBinding
+import com.android.foodapp.model.ApiResponse
 import com.squareup.picasso.Picasso
 
 class DetailScreen : AppCompatActivity() {

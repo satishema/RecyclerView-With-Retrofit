@@ -1,10 +1,10 @@
-package com.android.recyclerview.room
+package com.android.foodapp.room
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.android.recyclerview.model.ApiResponse
+import com.android.foodapp.model.ApiResponse
 
 @Dao
 interface ApiDao {
