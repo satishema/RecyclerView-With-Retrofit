@@ -1,6 +1,6 @@
-package com.recyclerview.recyclerviewpractice
+package com.android.foodapp
 
-import com.recyclerview.recyclerviewpractice.model.ApiResponse
+import com.android.foodapp.model.ApiResponse
 
 interface OnClickRowListener {
     fun onClickItem(

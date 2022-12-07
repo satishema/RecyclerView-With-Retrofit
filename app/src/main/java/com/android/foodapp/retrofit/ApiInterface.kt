@@ -1,6 +1,6 @@
-package com.recyclerview.recyclerviewpractice.retrofit
+package com.android.foodapp.retrofit
 
-import com.recyclerview.recyclerviewpractice.model.ApiResponse
+import com.android.foodapp.model.ApiResponse
 import retrofit2.Call
 import retrofit2.http.GET
 

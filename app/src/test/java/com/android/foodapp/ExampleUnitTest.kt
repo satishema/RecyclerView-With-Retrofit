@@ -1,4 +1,4 @@
-package com.recyclerview.recyclerviewpractice
+package com.android.foodapp
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

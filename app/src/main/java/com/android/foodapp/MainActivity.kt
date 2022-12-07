@@ -1,4 +1,4 @@
-package com.recyclerview.recyclerviewpractice
+package com.android.foodapp
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,10 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.recyclerview.recyclerviewpractice.adapter.RecyclerViewAdapter
-import com.recyclerview.recyclerviewpractice.databinding.ActivityMainBinding
-import com.recyclerview.recyclerviewpractice.model.ApiResponse
-import com.recyclerview.recyclerviewpractice.retrofit.Retrofit
+import com.android.foodapp.adapter.RecyclerViewAdapter
+import com.android.foodapp.databinding.ActivityMainBinding
+import com.android.foodapp.model.ApiResponse
+import com.android.foodapp.retrofit.Retrofit
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
