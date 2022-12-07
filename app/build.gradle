@@ -5,6 +5,7 @@ plugins {
 }
 
 android {
+    namespace 'com.recyclerview.recyclerviewpractice'
     compileSdk 33
 
     defaultConfig {
@@ -34,10 +35,11 @@ android {
         viewBinding true
         dataBinding true
     }
-    namespace 'com.recyclerview.recyclerviewpractice'
 }
 
 dependencies {
+
+    def lifecycle_version = "2.5.1"
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -65,4 +67,10 @@ dependencies {
 
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // ViewModel utilities for Compose
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 }
