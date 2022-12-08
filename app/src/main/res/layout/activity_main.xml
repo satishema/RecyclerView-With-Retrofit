@@ -1,55 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".activities.MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-<!--    &lt;!&ndash;progress bar for loading indicator&ndash;&gt;-->
-<!--    <ProgressBar-->
-<!--        android:id="@+id/progressBar"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_centerInParent="true" />-->
-
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmer_layout"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:visibility="gone">
+        tools:context=".activities.MainActivity">
 
-        <LinearLayout
+        <!--    &lt;!&ndash;progress bar for loading indicator&ndash;&gt;-->
+        <!--    <ProgressBar-->
+        <!--        android:id="@+id/progressBar"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_centerInParent="true" />-->
+
+        <!--    <com.facebook.shimmer.ShimmerFrameLayout-->
+        <!--        android:id="@+id/shimmer_layout"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="match_parent"-->
+        <!--        tools:visibility="gone">-->
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="vertical">-->
+
+        <!--            <include layout="@layout/custom_row_list_view" />-->
+        <!--            <include layout="@layout/custom_row_list_view" />-->
+        <!--            <include layout="@layout/custom_row_list_view" />-->
+        <!--            <include layout="@layout/custom_row_list_view" />-->
+        <!--            <include layout="@layout/custom_row_list_view" />-->
+        <!--            <include layout="@layout/custom_row_list_view" />-->
+        <!--            <include layout="@layout/custom_row_list_view" />-->
+        <!--            <include layout="@layout/custom_row_list_view" />-->
+        <!--            <include layout="@layout/custom_row_list_view" />-->
+        <!--            <include layout="@layout/custom_row_list_view" />-->
+
+        <!--        </LinearLayout>-->
+
+        <!--    </com.facebook.shimmer.ShimmerFrameLayout>-->
+
+        <!--creating a recycler view for displaying
+            our list of food-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            tools:listitem="@layout/custom_row_list_view" />
 
-            <include layout="@layout/custom_row_list_view" />
-            <include layout="@layout/custom_row_list_view" />
-            <include layout="@layout/custom_row_list_view" />
-            <include layout="@layout/custom_row_list_view" />
-            <include layout="@layout/custom_row_list_view" />
-            <include layout="@layout/custom_row_list_view" />
-            <include layout="@layout/custom_row_list_view" />
-            <include layout="@layout/custom_row_list_view" />
-            <include layout="@layout/custom_row_list_view" />
-            <include layout="@layout/custom_row_list_view" />
-
-        </LinearLayout>
-
-    </com.facebook.shimmer.ShimmerFrameLayout>
-
-    <!--creating a recycler view for displaying
-        our list of courses-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/custom_row_list_view"/>
-
-</RelativeLayout>
+    </RelativeLayout>
 </layout>

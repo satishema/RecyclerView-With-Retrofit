@@ -1,10 +1,9 @@
 package com.android.foodapp.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-//class FoodResponse : ArrayList<ApiResponseItem>(){
-//
-//}
-
+@Entity(tableName = "food_response")
 data class FoodResponse(
     val calories: String?,
     val carbos: String?,
@@ -13,7 +12,7 @@ data class FoodResponse(
     val difficulty: Int?,
     val fats: String?,
     val headline: String?,
-    val id: String?,
+    @PrimaryKey val id: String,
     val image: String?,
     val name: String?,
     val proteins: String?,

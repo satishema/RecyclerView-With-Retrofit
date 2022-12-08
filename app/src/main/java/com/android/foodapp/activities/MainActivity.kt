@@ -7,11 +7,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.foodapp.FoodRepository
+import com.android.foodapp.FoodViewModelFactory
 import com.android.foodapp.R
 import com.android.foodapp.adapter.RecipeAdapter
 import com.android.foodapp.databinding.ActivityMainBinding
 import com.android.foodapp.listener.OnClickRowListener
 import com.android.foodapp.model.FoodResponse
+import com.android.foodapp.room.AppDatabase
 import com.android.foodapp.viewModel.RecipeViewModel
 
 
@@ -25,11 +28,30 @@ class MainActivity : AppCompatActivity(), OnClickRowListener {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+
+        val foodRepository = FoodRepository(AppDatabase.getDatabase(this))
+        val factory = FoodViewModelFactory(foodRepository)
+
         prepareRecyclerView()
-        viewModel = ViewModelProvider(this)[RecipeViewModel::class.java]
-        viewModel.getRecipe()
-        viewModel.observeRecipeLiveData().observe(this, Observer { movieList ->
-            recipeAdapter.setMovieList(movieList)
+        viewModel = ViewModelProvider(this, factory)[RecipeViewModel::class.java]
+
+//        viewModel.getRecipe()
+//        viewModel.observeRecipeLiveData().observe(this, Observer { foodList ->
+////            recipeAdapter.setMovieList(foodList)
+//            viewModel.insert(foodList)
+//        })
+
+        // To display all items in recycler view
+        viewModel.allFoodItems().observe(this, Observer {
+            if (it.isNullOrEmpty()) {
+                viewModel.getRecipe()
+                viewModel.observeRecipeLiveData().observe(this, Observer { foodList ->
+//            recipeAdapter.setMovieList(foodList)
+                    viewModel.insert(foodList)
+                })
+            } else {
+                recipeAdapter.setMovieList(it)
+            }
         })
     }
 
