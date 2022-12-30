@@ -9,12 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.foodapp.OnClickRowListener
 import com.android.foodapp.R
 import com.android.foodapp.adapter.RecyclerViewAdapter.RecyclerViewHolder
-import com.android.foodapp.model.ApiResponse
-import com.squareup.picasso.Picasso
+import com.android.foodapp.model.EmployeeVacationBalancesResponse
 
 class RecyclerViewAdapter(
     private val listener: OnClickRowListener,
-    private val courseDataArrayList: List<ApiResponse>
+    private val courseDataArrayList: List<EmployeeVacationBalancesResponse>
 ) : RecyclerView.Adapter<RecyclerViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.custom_row_list_view, parent, false)
@@ -24,10 +23,10 @@ class RecyclerViewAdapter(
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         // Set the data to textview from our modal class.
         val item = courseDataArrayList[position]
-        holder.nameTV.text = item.name
-        holder.caloriesTV.text = item.calories
-        holder.headlineTV.text = item.headline
-        Picasso.get().load(item.thumb).into(holder.imageView)
+//        holder.nameTV.text = item.name
+//        holder.caloriesTV.text = item.calories
+//        holder.headlineTV.text = item.headline
+//        Picasso.get().load(item.thumb).into(holder.imageView)
 
         holder.itemView.setOnClickListener {
             listener.onClickItem(position, item)

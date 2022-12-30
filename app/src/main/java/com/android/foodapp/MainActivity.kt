@@ -3,93 +3,91 @@ package com.android.foodapp
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.android.foodapp.adapter.RecyclerViewAdapter
 import com.android.foodapp.databinding.ActivityMainBinding
-import com.android.foodapp.model.ApiResponse
+import com.android.foodapp.model.EmployeeVacationBalancesResponse
 import com.android.foodapp.retrofit.Retrofit
+import com.google.gson.Gson
+import com.google.gson.JsonElement
+import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class MainActivity : AppCompatActivity(),OnClickRowListener {
-
-    lateinit var binding : ActivityMainBinding
-
-    private var courseRV: RecyclerView? = null
-    private var recyclerDataArrayList: ArrayList<ApiResponse>? = null
-    private var recyclerViewAdapter: RecyclerViewAdapter? = null
+class MainActivity : AppCompatActivity(), OnClickRowListener {
+    private val TAG = MainActivity::class.java.name
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        courseRV = findViewById(R.id.recyclerView)
-
-        recyclerDataArrayList = ArrayList()
-       
-        getData()
+        getEmployeeVacationBalances("waseem@psu.edu.sa")
+//        getReq()
     }
 
-    private fun getData() {
-        binding.shimmerLayout.startShimmer()
+//    private fun convertStringToModel(jsonResponse: String?): EmployeeVacationBalancesResponse {
+//        val jsonObject: JsonObject = JsonParser.parseString("{$jsonResponse}").asJsonObject
+//        val gson = Gson()
+//        return gson.fromJson(jsonObject, EmployeeVacationBalancesResponse::class.java)
+//    }
 
-        val call: Call<List<ApiResponse>> =
-            Retrofit.getClient.getApiData()
-        call.enqueue(object : Callback<List<ApiResponse>> {
+//    private fun convertStringToModel(jsonResponse: String?): List<EmployeeVacationBalancesResponse> {
+//        val jsonArray: JsonArray = JsonParser.parseString(jsonResponse).asJsonArray
+//        val gson = Gson()
+//        val listType = object : TypeToken<List<EmployeeVacationBalancesResponse>>() {}.type
+//        return gson.fromJson(jsonArray, listType)
+//    }
 
+
+    private fun getEmployeeVacationBalances(email: String) {
+        val call = Retrofit.service.getEmployeeVacationBalances(email)
+        call.enqueue(object : Callback<String> {
             override fun onResponse(
-                call: Call<List<ApiResponse>>,
-                response: Response<List<ApiResponse>>,
+                call: Call<String>,
+                response: Response<String>
             ) {
                 if (response.isSuccessful) {
+                    val responseData = response.body()
+                    val modifiedResponse =
+                        responseData?.convertToModel<EmployeeVacationBalancesResponse>()
+                    Log.d(TAG, "modifiedResponse: $modifiedResponse")
 
-//                    binding.progressBar.visibility = View.GONE
-                    binding.shimmerLayout.apply {
-                        stopShimmer()
-                        visibility = View.GONE
-                    }
-
-                    recyclerDataArrayList = response.body() as ArrayList<ApiResponse>?
-
-                    for (i in recyclerDataArrayList!!.indices) {
-                        recyclerViewAdapter =
-                            RecyclerViewAdapter(this@MainActivity, recyclerDataArrayList!!)
-
-                        val manager = LinearLayoutManager(this@MainActivity)
-
-                        courseRV!!.layoutManager = manager
-
-                        courseRV!!.adapter = recyclerViewAdapter
-                    }
+                } else {
+                    val responseData = response.body()
+                    Log.d(TAG, "onResponse:${responseData.toString()} ")
+                    // Handle unsuccessful response
                 }
             }
 
-            override fun onFailure(
-                call: Call<List<ApiResponse>>,
-                t: Throwable
-            ) {
-                Log.e("TAG", "onFailure: " + t.message)
-
-                Toast.makeText(
-                    this@MainActivity,
-                    "Something went wrong, Try again",
-                    Toast.LENGTH_SHORT
-                ).show()
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                // Handle request failure
+                Log.d(TAG, "onFailure: $t")
             }
-
         })
     }
 
-    override fun onClickItem(position: Int, item: ApiResponse) {
-        DetailScreen.item = item
-        val i = Intent(applicationContext, DetailScreen::class.java)
-        startActivity(i)
+    override fun onClickItem(position: Int, item: EmployeeVacationBalancesResponse) {
+         DetailScreen.item = item
+         val i = Intent(applicationContext, DetailScreen::class.java)
+         startActivity(i)
     }
+}
 
+inline fun <reified T> String.convertToModel(): List<T> {
+    val gson = Gson()
+    val jsonElement: JsonElement = gson.fromJson(this, JsonElement::class.java)
+    val listType = object : TypeToken<List<T>>() {}.type
+    return when {
+        jsonElement.isJsonArray -> gson.fromJson(jsonElement.asJsonArray, listType)
+        jsonElement.isJsonObject -> gson.fromJson(jsonElement.asJsonObject, listType)
+        jsonElement.isJsonPrimitive -> gson.fromJson(jsonElement.asJsonPrimitive, listType)
+        else -> throw IllegalArgumentException("Unrecognized JSON element: $jsonElement")
+    }
 }
